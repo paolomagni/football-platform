@@ -54,18 +54,15 @@ football-platform/
 ```bash
 cd dbt
 dbt build
-
+```
 ---
 
 📅 Roadmap
+
 ✅ Raw data ingestion from bucket to BigQuery
-
 ✅ dbt models for staging and marts
-
 ⏳ End-to-end orchestration
-
 ⏳ Terraform setup for infrastructure
-
 ⏳ Automated testing & CI/CD pipeline
 
 ---
