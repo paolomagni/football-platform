@@ -71,29 +71,34 @@ dbt build
 
 ---
 
-📦 Data Source
+## 📦 Data Source
+
 Match data is sourced from Football-Data.org, a free public API for football data.
 
 ⚠️ This project is for educational and personal use only. Please review Football-Data.org terms before using in production.
 
 ---
 
-📈 Live Dashboard
+## 📈 Live Dashboard
+
 View the demo dashboard here: Champions League Dashboard [Looker Studio](https://lookerstudio.google.com/s/vnXW0_9aQtI)
 
 ---
 
-📄 License
+## 📄 License
+
 This project is licensed under the MIT License.
 
 ---
 
-🙌 Contributing
+## 🙌 Contributing
+
 This is a personal learning project, but feel free to fork or suggest improvements!
 
 ---
 
-🔗 Connect
+## 🔗 Connect
+
 Created by Paolo — [connect with me on LinkedIn](https://www.linkedin.com/in/paolo-magni-091731112/).
 
 ---
