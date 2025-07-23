@@ -19,7 +19,7 @@ football-platform/
 ├── .gitignore  
 ├── LICENSE  
 ├── README.md  
-│  
+│
 ├── cloud_functions/  
 │   ├── configs/  
 │   ├── fetch-matches-footballdata/  
