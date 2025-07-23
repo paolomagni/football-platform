@@ -1,0 +1,14 @@
+[
+  { "name": "FIFA World Cup", "competition_code": "WC" },
+  { "name": "UEFA Champions League", "competition_code": "CL" },
+  { "name": "Bundesliga", "competition_code": "BL1" },
+  { "name": "Eredivisie", "competition_code": "DED" },
+  { "name": "Campeonato Brasileiro Série A", "competition_code": "BSA" },
+  { "name": "Primera Division", "competition_code": "PD" },
+  { "name": "Ligue 1", "competition_code": "FL1" },
+  { "name": "Championship", "competition_code": "ELC" },
+  { "name": "Primeira Liga", "competition_code": "PPL" },
+  { "name": "European Championship", "competition_code": "EC" },
+  { "name": "Serie A", "competition_code": "SA" },
+  { "name": "Premier League", "competition_code": "PL" }
+]

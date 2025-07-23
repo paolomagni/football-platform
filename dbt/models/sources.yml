@@ -1,0 +1,7 @@
+version: 2
+
+sources:
+  - name: champions_league
+    schema: champions_league
+    tables:
+      - name: raw_cl__matches

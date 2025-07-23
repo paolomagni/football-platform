@@ -1,0 +1,47 @@
+name: 'footballplatform'
+version: '1.0.0'
+
+profile: 'footballplatform'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  footballplatform:
+    staging:
+      +materialized: view
+      +tags: ['staging']
+      +persist_docs:
+        relation: true
+        columns: true
+      +hours_to_expiration: 168
+
+    intermediate:
+      +materialized: view
+      +tags: ['intermediate']
+
+    marts:
+      +materialized: view
+      +tags: ['mart']
+      +persist_docs:
+        relation: true
+        columns: true
+
+
+tests:
+  footballplatform:
+    +severity: warn
+    marts:
+      +severity: error
+
+vars:
+  dbt_utils:
+    audit_dataset: champions_league_dbt_test__audit

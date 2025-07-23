@@ -1,0 +1,23 @@
+# Ignore Python virtual environments
+venv/
+.env/
+.venv/
+
+# Ignore VS Code editor settings
+.vscode/
+
+# Ignore Python bytecode cache
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Ignore dbt auto-generated and downloaded folders
+dbt/target/
+dbt/logs/
+dbt/dbt_packages/
+dbt/dbt_modules/
+
+# Ignore local testing or temp folders
+testing/
+.cache/
+*.log

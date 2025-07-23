@@ -1,0 +1,119 @@
+version: 2
+
+models:
+  - name: int_cl__team_stats
+    description: ""
+    columns:
+      - name: season_id
+        description: "Unique ID of the season within the competition"
+        tests:
+          - not_null
+
+      - name: team_id
+        description: "Unique ID of the team"
+        tests:
+          - not_null
+
+      - name: season_year
+        description: "Year extracted from season_end_date"
+
+      - name: Stage
+        description: "The stage of the match. [LEAGUE STAGE or GROUP STAGE | PLAYOFFS | LAST 16 | QUARTER FINALS | SEMI FINALS | FINAL]"
+        tests:
+          - not_null
+
+      - name: team_name
+        description: "Name of the team"
+        tests:
+          - not_null
+
+      - name: matches_played
+        description: "Total matches played"
+
+      - name: wins
+        description: "Total matches won"
+
+      - name: losses
+        description: "Total matches lost"
+
+      - name: draws
+        description: "Total matches drawn"
+
+      - name: goals_scored
+        description: "Total goals scored"
+
+      - name: goals_conceded
+        description: "Total goals conceded"
+
+      - name: goals_scored_home
+        description: "Goals scored at home"
+
+      - name: goals_conceded_home
+        description: "Goals conceded at home"
+
+      - name: goals_scored_away
+        description: "Goals scored away"
+
+      - name: goals_conceded_away
+        description: "Goals conceded away"
+
+      - name: goal_difference
+        description: "Goal difference in the match"
+
+#      - name: avg_goals_scored
+#        description: "Average goals scored per match"
+#
+#      - name: avg_goals_conceded
+#        description: "Average goals conceded per match"
+#
+#      - name: avg_goal_difference
+#        description: "Average goal difference per match"
+
+      - name: home_match_played
+        description: "Matches played at home"
+
+      - name: away_match_played
+        description: "Matches played at away"
+
+      - name: home_wins
+        description: "Matches won at home"
+
+      - name: home_draws
+        description: "Matches drawn at home"
+
+      - name: home_losses
+        description: "Matches lost at home"
+
+      - name: away_wins
+        description: "Matches won away"
+
+      - name: away_draws
+        description: "Matches drawn away"
+
+      - name: away_losses
+        description: "Matches lost away"
+
+#      - name: avg_goals_scored_home
+#        description: "Average goals scored at home"
+#
+#      - name: avg_goals_conceded_home
+#        description: "Average goals conceded at home"
+#
+#      - name: avg_goals_scored_away
+#        description: "Average goals scored away"
+#
+#      - name: avg_goals_conceded_away
+#        description: "Average goals conceded away"
+
+      - name: home_comebacks
+        description: "Number of home comebacks"
+
+      - name: away_comebacks
+        description: "Number of away comebacks"
+
+      - name: home_collapses
+        description: "Number of home collapses"
+
+      - name: away_collapses
+        description: "Number of away collapses"
+
