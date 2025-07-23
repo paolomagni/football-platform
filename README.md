@@ -14,12 +14,12 @@ The project runs on **Google Cloud Platform** and includes:
 ---
 
 ## 📂 Repository Structure
-
+```
 football-platform/  
 ├── .gitignore  
 ├── LICENSE  
 ├── README.md  
-│
+│  
 ├── cloud_functions/  
 │   ├── configs/  
 │   ├── fetch-matches-footballdata/  
@@ -32,7 +32,7 @@ football-platform/
     ├── dbt_project.yml  
     ├── package-lock.yml  
     └── packages.yml  
-
+```
 ---
 
 ## 🔧 Technologies Used
