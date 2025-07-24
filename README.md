@@ -23,8 +23,9 @@ football-platform/
 ├── cloud_functions/  
 │   ├── configs/  
 │   ├── fetch-matches-footballdata/  
-│   ├── load-cl-matches-footballdata/  
-│   └── requirements.txt  
+│   └── load-cl-matches-footballdata/
+│       ├── main.py   
+│       └── requirements.txt  
 │  
 └── dbt/  
     ├── macros/  
