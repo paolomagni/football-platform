@@ -16,7 +16,8 @@ The project runs on **Google Cloud Platform** and includes:
 ## 📂 Repository Structure
 ```
 football-platform/  
-├── .gitignore  
+├── .gitignore
+├── .github  
 ├── LICENSE  
 ├── README.md  
 │  
