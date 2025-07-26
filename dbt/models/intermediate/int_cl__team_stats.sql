@@ -13,9 +13,6 @@ with team_stats_agg as (
     sum(case when goals_for_ft = goals_against_ft then 1 else 0 end) as draws,
     sum(goals_for_ft) as goals_scored,
     sum(goals_against_ft) as goals_conceded,
-    --round(avg(goals_for_ft),1) as avg_goals_scored,
-    --round(avg(goals_against_ft),1) as avg_goals_conceded,
-    --round(avg(goals_for_ft - goals_against_ft),1) as avg_goal_difference,
     sum(goals_for_ft - goals_against_ft) as goal_difference
 
   from {{ ref("int_cl__base_team_matches") }}
@@ -35,10 +32,6 @@ team_stats_home_away as (
     sum(case when not is_home and goals_for_ft > goals_against_ft then 1 else 0 end) as away_wins,
     sum(case when not is_home and goals_for_ft = goals_against_ft then 1 else 0 end) as away_draws,
     sum(case when not is_home and goals_for_ft < goals_against_ft then 1 else 0 end) as away_losses,
-    --round(avg(case when is_home then goals_for_ft end),1) as avg_goals_scored_home,
-    --round(avg(case when is_home then goals_against_ft end),1) as avg_goals_conceded_home,
-    --round(avg(case when not is_home then goals_for_ft end),1) as avg_goals_scored_away,
-    --round(avg(case when not is_home then goals_against_ft end),1) as avg_goals_conceded_away,
     sum(case when is_home then goals_for_ft end) as goals_scored_home,
     sum(case when is_home then goals_against_ft end) as goals_conceded_home,
     sum(case when not is_home then goals_for_ft end) as goals_scored_away,

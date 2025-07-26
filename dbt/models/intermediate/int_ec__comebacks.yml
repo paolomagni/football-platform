@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: int_cl__comebacks
+  - name: int_ec__comebacks
     description: ""
     columns:
       - name: season_id
@@ -22,6 +22,9 @@ models:
 
       - name: stage
         description: "The stage of the match. [LEAGUE STAGE or GROUP STAGE | PLAYOFFS | LAST 16 | QUARTER FINALS | SEMI FINALS | FINAL]"
+
+      - name: group
+        description: "The group of the team during GROUP STAGE"
 
       - name: team_id
         description: "Unique ID of the team"

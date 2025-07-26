@@ -1,0 +1,118 @@
+version: 2
+
+models:
+  - name: int_ec__team_match_facts
+    description: ""
+    columns:
+      - name: season_id
+        description: "Unique ID of the season within the competition"
+        tests:
+          - not_null
+
+      - name: stage
+        description: "The stage of the match. [LEAGUE STAGE or GROUP STAGE | PLAYOFFS | LAST 16 | QUARTER FINALS | SEMI FINALS | FINAL]"
+
+      - name: group
+        description: "The group of the team during GROUP STAGE"
+
+      - name: team_id
+        description: "Unique ID of the team"
+        tests:
+          - not_null
+
+      - name: match_id
+        description: "ID of the match (each match appears once per team)"
+        tests:
+          - not_null
+
+      - name: match_date
+        description: "Date when the match was played"
+
+      - name: matchday
+        description: "Number of the matchday within the stage of the competition when the match was played"
+
+      - name: global_matchday
+        description: "Global matchday index across the whole season, useful for comparing team performance over time. Only present for matches actually played by the team. Gaps may exist if a team did not play in a given stage."
+
+      - name: season_year
+        description: "Year extracted from season_end_date"
+
+      - name: match_date
+        description: ""
+
+      - name: matchday
+        description: "Number of the matchday within the competition when the match was played"
+
+      - name: team_name
+        description: "Name of the team"
+        tests:
+          - not_null
+
+      - name: matches_played
+        description: "Total matches played"
+
+      - name: wins
+        description: "Total matches won"
+
+      - name: losses
+        description: "Total matches lost"
+
+      - name: draws
+        description: "Total matches drawn"
+
+      - name: goals_scored
+        description: "Total goals scored"
+
+      - name: goals_conceded
+        description: "Total goals scored conceded"
+
+      - name: goal_difference
+        description: ""
+
+      - name: home_wins
+        description: "Matches won at home"
+
+      - name: home_draws
+        description: "Matches drawn at home"
+
+      - name: home_losses
+        description: "Matches lost at home"
+
+      - name: away_wins
+        description: "Matches won away"
+
+      - name: away_draws
+        description: "Matches drawn away"
+
+      - name: away_losses
+        description: "Matches lost away"
+
+      - name: goals_scored_home
+        description: ""
+
+      - name: goals_conceded_home
+        description: ""
+
+      - name: goals_scored_away
+        description: ""
+
+      - name: goals_conceded_away
+        description: ""
+
+      - name: home_matches_played
+        description: ""
+
+      - name: away_matches_played
+        description: ""
+
+      - name: home_comebacks
+        description: "Number of home comebacks"
+
+      - name: away_comebacks
+        description: "Number of away comebacks"
+
+      - name: home_collapses
+        description: "Number of home collapses"
+
+      - name: away_collapses
+        description: "Number of away collapses"
