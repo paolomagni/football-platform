@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: stg_cl__matches
+  - name: stg_ec__matches
     description: ""
     columns:
       - name: match_id
@@ -23,6 +23,9 @@ models:
 
       - name: stage
         description: "The stage of the match. [LEAGUE STAGE or GROUP STAGE | PLAYOFFS | LAST 16 | QUARTER FINALS | SEMI FINALS | FINAL]"
+
+      - name: group
+        description: "The group of the team during GROUP STAGE"
 
       - name: home_team_id
         description: "Unique ID of the team playing at home"

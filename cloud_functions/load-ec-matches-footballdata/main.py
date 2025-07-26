@@ -9,7 +9,7 @@ import os
 PROJECT_ID = os.environ.get('PROJECT_ID')
 BUCKET_NAME = os.environ.get('BUCKET_NAME')
 DATASET_ID = "football_data"
-TABLE_ID = "raw_cl__matches"
+TABLE_ID = "raw_ec__matches"
 
 def get_final_goals(match, team):
     """
@@ -27,7 +27,7 @@ def get_final_goals(match, team):
         return score.get("fullTime", {}).get(team, 0) or 0
 
 @functions_framework.cloud_event
-def load_cl_matches_footballdata(cloud_event):
+def load_ec_matches_footballdata(cloud_event):
     """Triggered by a change to a Cloud Storage bucket.
     Args:
          cloud_event (google.events.cloud.storage.v1.ObjectFinalizedData):
@@ -40,10 +40,10 @@ def load_cl_matches_footballdata(cloud_event):
 
     print(f"Triggered by file: {file_name} in bucket: {file_bucket}")
 
-    # Check if the file is in the 'competition/CL/' folder
-    if not file_name.startswith('competition/CL/'):
-        print(f"File {file_name} is not in the 'competition/CL/' folder. Ignoring.")
-        return "File not in 'competition/CL/' folder", 200
+    # Check if the file is in the 'competition/EC/' folder
+    if not file_name.startswith('competition/EC/'):
+        print(f"File {file_name} is not in the 'competition/EC/' folder. Ignoring.")
+        return "File not in 'competition/EC/' folder", 200
 
     # Client GCP
     storage_client = storage.Client(project=PROJECT_ID)
@@ -66,6 +66,7 @@ def load_cl_matches_footballdata(cloud_event):
             "status": match["status"],
             "matchday": match.get("matchday"),
             "stage": match.get("stage"),
+            "group": match.get("group"),
             "home_team_id": match["homeTeam"]["id"],
             "home_team_name": match["homeTeam"]["name"],
             "away_team_id": match["awayTeam"]["id"],

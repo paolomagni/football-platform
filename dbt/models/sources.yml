@@ -2,6 +2,11 @@ version: 2
 
 sources:
   - name: champions_league
-    schema: champions_league
+    schema: football_data
     tables:
       - name: raw_cl__matches
+
+  - name: european_championship
+    schema: football_data
+    tables:
+      - name: raw_ec__matches
