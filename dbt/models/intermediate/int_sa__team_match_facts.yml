@@ -1,16 +1,13 @@
 version: 2
 
 models:
-  - name: int_cl__team_match_facts
+  - name: int_sa__team_match_facts
     description: ""
     columns:
       - name: season_id
         description: "Unique ID of the season within the competition"
         tests:
           - not_null
-
-      - name: stage
-        description: "The stage of the match. [LEAGUE STAGE or GROUP STAGE | PLAYOFFS | LAST 16 | QUARTER FINALS | SEMI FINALS | FINAL]"
 
       - name: team_id
         description: "Unique ID of the team"
@@ -64,13 +61,52 @@ models:
         description: "Total goals scored conceded"
 
       - name: goal_difference
-        description: "Difference between goals scored and goals conceded"
+        description: ""
 
-      - name: is_home
-        description: "Boolean flag indicating whether the team played at home"
+      - name: home_wins
+        description: "Matches won at home"
 
-      - name: is_comeback
-        description: "Flag for a comeback match - a win after trailing at half-time"
+      - name: home_draws
+        description: "Matches drawn at home"
 
-      - name: is_collapse
-        description: "Flag for a collapse match - a loss after leading at half-time"
+      - name: home_losses
+        description: "Matches lost at home"
+
+      - name: away_wins
+        description: "Matches won away"
+
+      - name: away_draws
+        description: "Matches drawn away"
+
+      - name: away_losses
+        description: "Matches lost away"
+
+      - name: goals_scored_home
+        description: ""
+
+      - name: goals_conceded_home
+        description: ""
+
+      - name: goals_scored_away
+        description: ""
+
+      - name: goals_conceded_away
+        description: ""
+
+      - name: home_matches_played
+        description: ""
+
+      - name: away_matches_played
+        description: ""
+
+      - name: home_comebacks
+        description: "Number of home comebacks"
+
+      - name: away_comebacks
+        description: "Number of away comebacks"
+
+      - name: home_collapses
+        description: "Number of home collapses"
+
+      - name: away_collapses
+        description: "Number of away collapses"

@@ -10,3 +10,13 @@ sources:
     schema: football_data
     tables:
       - name: raw_ec__matches
+
+  - name: serie_a
+    schema: football_data
+    tables:
+      - name: raw_sa__matches
+
+  - name: premier_league
+    schema: football_data
+    tables:
+      - name: raw_pl__matches

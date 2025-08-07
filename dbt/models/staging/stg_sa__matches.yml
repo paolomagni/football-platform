@@ -1,0 +1,90 @@
+version: 2
+
+models:
+  - name: stg_sa__matches
+    description: ""
+    columns:
+      - name: match_id
+        description: "Unique ID of the match"
+        tests:
+          - not_null:
+              severity: error
+          - unique:
+              severity: error
+
+      - name: utc_date
+        description: "Date and time of the match"
+
+      - name: status
+        description: "The status of a match. [SCHEDULED | LIVE | IN PLAY | PAUSED | FINISHED | POSTPONED | SUSPENDED | CANCELLED]"
+
+      - name: matchday
+        description: "Number of the matchday within the competition when the match was played"
+
+      - name: home_team_id
+        description: "Unique ID of the team playing at home"
+        tests:
+          - not_null:
+              severity: error
+
+      - name: home_team_name
+        description: "Name of the team playing at home"
+        tests:
+          - not_null:
+              severity: error
+
+      - name: away_team_id
+        description: "Unique ID of the team playing away"
+        tests:
+          - not_null:
+              severity: error
+
+      - name: away_team_name
+        description: "Name of the team playing away"
+        tests:
+          - not_null:
+              severity: error
+
+      - name: fulltime_home_goals
+        description: "Goles scored in the game by the home team"
+
+      - name: fulltime_away_goals
+        description: "Goles scored in the game by the away team"
+
+      - name: halftime_home_goals
+        description: "Goles scored in the first half by the home team"
+
+      - name: halftime_away_goals
+        description: "Goles scored in the first half by the away team"
+
+      - name: winner
+        description: "Label of the team winning the game, otherwise draw [HOME_TEAM | AWAY_TEAM | DRAW]"
+
+      - name: referees
+        description: "Name and surname of the main refree of the match"
+
+      - name: competition_id
+        description: "Unique ID of the match"
+
+      - name: competition_name
+        description: "Unique name of the competition"
+
+      - name: competition_code
+        description: "Unique name of the competition"
+        tests:
+          - not_null
+
+      - name: season_id
+        description: "Unique ID of the season within the competition"
+
+      - name: season_start_date
+        description: "Date of the season start"
+
+      - name: season_end_date
+        description: "Date of the season end"
+
+      - name: import_timestamp
+        description: "Timestamp of data import from https://www.football-data.org/"
+        tests:
+          - not_null:
+              severity: error

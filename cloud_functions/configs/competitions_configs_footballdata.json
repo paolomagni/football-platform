@@ -1,14 +1,40 @@
-[
-  { "name": "FIFA World Cup", "competition_code": "WC" },
-  { "name": "UEFA Champions League", "competition_code": "CL" },
-  { "name": "Bundesliga", "competition_code": "BL1" },
-  { "name": "Eredivisie", "competition_code": "DED" },
-  { "name": "Campeonato Brasileiro Série A", "competition_code": "BSA" },
-  { "name": "Primera Division", "competition_code": "PD" },
-  { "name": "Ligue 1", "competition_code": "FL1" },
-  { "name": "Championship", "competition_code": "ELC" },
-  { "name": "Primeira Liga", "competition_code": "PPL" },
-  { "name": "European Championship", "competition_code": "EC" },
-  { "name": "Serie A", "competition_code": "SA" },
-  { "name": "Premier League", "competition_code": "PL" }
-]
+{
+  "competitions": [
+    { "name": "FIFA World Cup", "competition_code": "WC" },
+    { "name": "UEFA Champions League", "competition_code": "CL" },
+    { "name": "Bundesliga", "competition_code": "BL1" },
+    { "name": "Eredivisie", "competition_code": "DED" },
+    { "name": "Campeonato Brasileiro Série A", "competition_code": "BSA" },
+    { "name": "Primera Division", "competition_code": "PD" },
+    { "name": "Ligue 1", "competition_code": "FL1" },
+    { "name": "Championship", "competition_code": "ELC" },
+    { "name": "Primeira Liga", "competition_code": "PPL" },
+    { "name": "European Championship", "competition_code": "EC" },
+    { "name": "Serie A", "competition_code": "SA" },
+    { "name": "Premier League", "competition_code": "PL" }
+  ],
+  "call_examples": [
+    {
+      "description": "Get historical matches from Premier League",
+      "payload": {
+        "mode": "history",
+        "competition_code": "PL"
+      }
+    },
+    {
+      "description": "Get current season matches from Premier League",
+      "payload": {
+        "mode": "current",
+        "competition_code": "PL"
+      }
+    },
+    {
+      "description": "Get matches for a specific year (2024) from Premier League",
+      "payload": {
+        "mode": "year",
+        "competition_code": "PL",
+        "year": "2024"
+      }
+    }
+  ]
+}

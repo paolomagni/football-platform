@@ -122,11 +122,11 @@
         },
 
         "is_comeback": {
-            "description": "True if the team made a comeback",
+            "description": "Flag for a comeback match - a win after trailing at half-time",
             "tests": ["not_null"]
         },
         "is_collapse": {
-            "description": "True if the team collapsed",
+            "description": "Flag for a collapse match - a loss after leading at half-time",
             "tests": ["not_null"]
         },
 
@@ -136,23 +136,8 @@
         "draws": {"description": "Total matches drawn"},
         "goals_scored": {"description": "Total goals scored"},
         "goals_conceded": {"description": "Total goals scored conceded"},
-        "avg_goals_scored": {"description": "Average goals scored per match"},
-        "avg_goals_conceded": {"description": "Average goals conceded per match"},
-        "avg_goal_difference": {"description": "Average goal difference per match"},
-        "home_wins": {"description": "Matches won at home"},
-        "home_draws": {"description": "Matches drawn at home"},
-        "home_losses": {"description": "Matches lost at home"},
-        "away_wins": {"description": "Matches won away"},
-        "away_draws": {"description": "Matches drawn away"},
-        "away_losses": {"description": "Matches lost away"},
-        "avg_goals_scored_home": {"description": "Average goals scored at home"},
-        "avg_goals_conceded_home": {"description": "Average goals conceded at home"},
-        "avg_goals_scored_away": {"description": "Average goals scored away"},
-        "avg_goals_conceded_away": {"description": "Average goals conceded away"},
-        "home_comebacks": {"description": "Number of home comebacks"},
-        "away_comebacks": {"description": "Number of away comebacks"},
-        "home_collapses": {"description": "Number of home collapses"},
-        "away_collapses": {"description": "Number of away collapses"}
+        "goal_difference": {"description": "Difference between goals scored and goals conceded"},
+        "is_home": {"description": "Boolean flag indicating whether the team played at home"}
 
     } %}
 
