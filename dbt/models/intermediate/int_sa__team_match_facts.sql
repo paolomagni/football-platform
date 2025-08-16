@@ -37,37 +37,6 @@ global_matchdays as (
 
 ),
 
--- aggregation for home/away
-team_stats_home_away as (
-  select
-
-    season_id,
-    match_id,
-    team_id,
-    case when is_home and goals_for_ft > goals_against_ft then 1 else 0 end as home_wins,
-    case when is_home and goals_for_ft = goals_against_ft then 1 else 0 end as home_draws,
-    case when is_home and goals_for_ft < goals_against_ft then 1 else 0 end as home_losses,
-    case when not is_home and goals_for_ft > goals_against_ft then 1 else 0 end as away_wins,
-    case when not is_home and goals_for_ft = goals_against_ft then 1 else 0 end as away_draws,
-    case when not is_home and goals_for_ft < goals_against_ft then 1 else 0 end as away_losses,
-    case when is_home then goals_for_ft end as goals_scored_home,
-    case when is_home then goals_against_ft end as goals_conceded_home,
-    case when not is_home then goals_for_ft end as goals_scored_away,
-    case when not is_home then goals_against_ft end as goals_conceded_away,
-    case when is_home and goals_for_ft > goals_against_ft then 3
-         when is_home and goals_for_ft = goals_against_ft then 1
-         when is_home and goals_for_ft < goals_against_ft then 0
-         else null end as home_pts,
-    case when not is_home and goals_for_ft > goals_against_ft then 3
-         when not is_home and goals_for_ft = goals_against_ft then 1
-         when not is_home and goals_for_ft < goals_against_ft then 0
-         else null end as away_pts,
-    case when is_home then 1 end as home_matches_played,
-    case when not is_home then 1 end as away_matches_played
-
-  from {{ ref("int_sa__base_team_matches") }}
-),
-
 -- aggregation comeback/collapses for home/away
 team_comeback_stats as (
   select
@@ -75,10 +44,9 @@ team_comeback_stats as (
     season_id,
     match_id,
     team_id,
-    case when is_home and is_comeback = 1 then 1 else 0 end as home_comebacks,
-    case when not is_home and is_comeback = 1 then 1 else 0 end as away_comebacks,
-    case when is_home and is_collapse = 1 then 1 else 0 end as home_collapses,
-    case when not is_home and is_collapse = 1 then 1 else 0 end as away_collapses
+    is_home,
+    is_comeback,
+    is_collapse
 
   from {{ ref("int_sa__comebacks") }}
 )
@@ -86,6 +54,5 @@ team_comeback_stats as (
 select *
 
 from team_stats_agg
-left join team_stats_home_away using(season_id, team_id, match_id)
 left join team_comeback_stats using(season_id, team_id, match_id)
 left join global_matchdays using(season_id, team_id, match_id)

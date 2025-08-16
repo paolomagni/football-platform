@@ -14,26 +14,19 @@ select
   losses,
   draws,
   points,
-  home_pts,
-  away_pts,
   goals_scored,
   goals_conceded,
   goal_difference,
-  goals_scored_home,
-  goals_conceded_home,
-  goals_scored_away,
-  goals_conceded_away,
-  home_matches_played,
-  away_matches_played,
-  home_wins,
-  home_draws,
-  home_losses,
-  away_wins,
-  away_draws,
-  away_losses,
-  home_comebacks,
-  away_comebacks,
-  home_collapses,
-  away_collapses
+  is_home,
+  is_comeback,
+  is_collapse,
+
+  case 
+    when wins = 1 and is_comeback = 1 then 'Win - Comeback'
+    when wins = 1 then 'Win'
+    when losses = 1 and is_collapse = 1 then 'Loss - Collapse'
+    when losses = 1 then 'Loss'
+    when draws = 1 then 'Draw'
+  end as win_loss_type
 
 from {{ ref("int_sa__team_match_facts") }}

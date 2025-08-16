@@ -49,24 +49,6 @@ models:
       - name: points
         description: "Points earned in the match: 3 for a win, 1 for a draw, 0 for a loss."
 
-      - name: home_pts
-        description: "Points earned when playing at home (null if the team was away)."
-
-      - name: away_pts
-        description: "Points earned when playing away (null if the team was at home)."
-
-      - name: goals_scored_home
-        description: "Goals scored at home"
-
-      - name: goals_conceded_home
-        description: "Goals conceded at home"
-
-      - name: goals_scored_away
-        description: "Goals scored away"
-
-      - name: goals_conceded_away
-        description: "Goals conceded away"
-
       - name: goal_difference
         description: "Goal difference in the match"
 
@@ -76,38 +58,14 @@ models:
       - name: goals_conceded
         description: "Total goals  conceded"
 
-      - name: home_match_played
-        description: "Matches played at home"
+      - name: is_home
+        description: "Boolean flag indicating whether the team played at home"
 
-      - name: away_match_played
-        description: "Matches played at away"
+      - name: is_comeback
+        description: "Flag for a comeback match - a win after trailing at half-time"
 
-      - name: home_wins
-        description: "Matches won at home"
+      - name: is_collapse
+        description: "Flag for a collapse match - a loss after leading at half-time"
 
-      - name: home_draws
-        description: "Matches drawn at home"
-
-      - name: home_losses
-        description: "Matches lost at home"
-
-      - name: away_wins
-        description: "Matches won away"
-
-      - name: away_draws
-        description: "Matches drawn away"
-
-      - name: away_losses
-        description: "Matches lost away"
-
-      - name: home_comebacks
-        description: "Number of home comebacks"
-
-      - name: away_comebacks
-        description: "Number of away comebacks"
-
-      - name: home_collapses
-        description: "Number of home collapses"
-
-      - name: away_collapses
-        description: "Number of away collapses"
+      - name: win_loss_type
+        description: "Match outcome category: 'Win - Comeback' (win after trailing at half-time), 'Win', 'Loss - Collapse' (loss after leading at half-time), 'Loss', or 'Draw'."

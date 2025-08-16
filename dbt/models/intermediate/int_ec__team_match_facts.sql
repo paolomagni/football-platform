@@ -36,31 +36,6 @@ global_matchdays as (
   
 ),
 
--- aggregation for home/away
-team_stats_home_away as (
-  select
-
-    season_id,
-    match_id,
-    stage,
-    `group`,
-    team_id,
-    case when is_home and goals_for_ft > goals_against_ft then 1 else 0 end as home_wins,
-    case when is_home and goals_for_ft = goals_against_ft then 1 else 0 end as home_draws,
-    case when is_home and goals_for_ft < goals_against_ft then 1 else 0 end as home_losses,
-    case when not is_home and goals_for_ft > goals_against_ft then 1 else 0 end as away_wins,
-    case when not is_home and goals_for_ft = goals_against_ft then 1 else 0 end as away_draws,
-    case when not is_home and goals_for_ft < goals_against_ft then 1 else 0 end as away_losses,
-    case when is_home then goals_for_ft end as goals_scored_home,
-    case when is_home then goals_against_ft end as goals_conceded_home,
-    case when not is_home then goals_for_ft end as goals_scored_away,
-    case when not is_home then goals_against_ft end as goals_conceded_away,
-    case when is_home then 1 end as home_matches_played,
-    case when not is_home then 1 end as away_matches_played
-
-  from {{ ref("int_ec__base_team_matches") }}
-),
-
 -- aggregation comeback/collapses for home/away
 team_comeback_stats as (
   select
@@ -70,17 +45,49 @@ team_comeback_stats as (
     stage,
     `group`,
     team_id,
-    case when is_home and is_comeback = 1 then 1 else 0 end as home_comebacks,
-    case when not is_home and is_comeback = 1 then 1 else 0 end as away_comebacks,
-    case when is_home and is_collapse = 1 then 1 else 0 end as home_collapses,
-    case when not is_home and is_collapse = 1 then 1 else 0 end as away_collapses
+    is_home,
+    is_comeback,
+    is_collapse
 
   from {{ ref("int_ec__comebacks") }}
 )
 
-select *
+select
+
+  team_stats_agg.season_id,
+  team_stats_agg.season_year,
+  team_stats_agg.match_id,
+  team_stats_agg.match_date,
+  team_stats_agg.matchday,
+  team_stats_agg.stage,
+  team_stats_agg.`group`,
+  team_stats_agg.team_id,
+  team_stats_agg.team_name,
+  team_stats_agg.matches_played,
+  team_stats_agg.wins,
+  team_stats_agg.losses,
+  team_stats_agg.draws,
+  team_stats_agg.goals_scored,
+  team_stats_agg.goals_conceded,
+  team_stats_agg.goal_difference,
+  tcs.is_home,
+  tcs.is_comeback,
+  tcs.is_collapse,
+  gm.global_matchday
 
 from team_stats_agg
-left join team_stats_home_away using(season_id, stage, `group`, team_id, match_id)
-left join team_comeback_stats using(season_id, stage, `group`, team_id, match_id)
-left join global_matchdays using(season_id, team_id, match_id)
+
+left join team_comeback_stats tcs
+  on team_stats_agg.season_id = tcs.season_id
+  and team_stats_agg.stage = tcs.stage
+  and team_stats_agg.team_id = tcs.team_id
+  and team_stats_agg.match_id = tcs.match_id
+  and (
+    team_stats_agg.`group` = tcs.`group`
+    or (team_stats_agg.`group` is null and tcs.`group` is null)
+  )
+  
+left join global_matchdays gm
+  on team_stats_agg.season_id = gm.season_id
+  and team_stats_agg.team_id = gm.team_id
+  and team_stats_agg.match_id = gm.match_id

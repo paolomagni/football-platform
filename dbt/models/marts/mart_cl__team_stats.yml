@@ -69,3 +69,6 @@ models:
 
       - name: is_collapse
         description: "Flag for a collapse match - a loss after leading at half-time"
+
+      - name: win_loss_type
+        description: "Match outcome category: 'Win - Comeback' (win after trailing at half-time), 'Win', 'Loss - Collapse' (loss after leading at half-time), 'Loss', or 'Draw'."
