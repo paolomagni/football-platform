@@ -1,0 +1,14 @@
+footballplatform:
+  target: dev
+  outputs:
+    dev:
+      dataset: football_data
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      location: US
+      method: service-account
+      priority: interactive
+      project: nimble-theme-279316
+      threads: 60
+      type: bigquery
+      keyfile: /secrets/dbt-key.json

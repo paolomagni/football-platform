@@ -1,11 +1,9 @@
 
 with source as (
 
-    select * from {{ source('european_championship', 'raw_ec__matches') }}
-    where DATE(import_timestamp) = (
-        select MAX(DATE(import_timestamp)) 
-        from {{ source('european_championship', 'raw_ec__matches') }}
-    )
+    select *,
+    from {{ source('european_championship', 'raw_ec__matches') }}
+    qualify date(import_timestamp) = max(date(import_timestamp)) over (partition by season_id)
 
 )
 

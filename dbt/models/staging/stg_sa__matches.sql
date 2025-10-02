@@ -1,11 +1,9 @@
 
 with source as (
 
-    select * from {{ source('serie_a', 'raw_sa__matches') }}
-    where DATE(import_timestamp) = (
-        select MAX(DATE(import_timestamp)) 
-        from {{ source('serie_a', 'raw_sa__matches') }}
-    )
+    select *,
+    from {{ source('serie_a', 'raw_sa__matches') }}
+    qualify date(import_timestamp) = max(date(import_timestamp)) over (partition by season_id)
 
 )
 
