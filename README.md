@@ -29,12 +29,15 @@ football-platform/
 │       ├── main.py   
 │       └── requirements.txt  
 │  
-└── dbt/  
-    ├── macros/  
-    ├── models/  
-    ├── dbt_project.yml  
-    ├── package-lock.yml  
-    └── packages.yml  
+├── dbt/  
+│   ├── macros/  
+│   ├── models/  
+│   ├── dbt_project.yml  
+│   ├── package-lock.yml  
+│   └── packages.yml
+│
+└── workflows/ 
+    └── trigger_dbt_build.yml
 ```
 ---
 
