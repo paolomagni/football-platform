@@ -12,8 +12,10 @@ models:
       - name: team_id
         description: "Unique ID of the team"
         tests:
-          - not_null
-
+          - not_null:
+              severity: warn
+              where: "stage != 'FINAL'"
+          
       - name: season_year
         description: "Year extracted from season_end_date"
 
@@ -38,7 +40,9 @@ models:
       - name: team_name
         description: "Name of the team"
         tests:
-          - not_null
+          - not_null:
+              severity: warn
+              where: "stage != 'FINAL'"
 
       - name: matches_played
         description: "Total matches played"

@@ -30,3 +30,4 @@ select
   end as win_loss_type
 
 from {{ ref("int_sa__team_match_facts") }}
+where match_date < current_date()

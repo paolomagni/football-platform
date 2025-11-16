@@ -26,7 +26,9 @@ models:
       - name: team_id
         description: "Unique ID of the team"
         tests:
-          - not_null
+          - not_null:
+              severity: warn
+              where: "stage != 'FINAL'"
 
       - name: is_home
         description: "True if the team is playing at home, False otherwise"

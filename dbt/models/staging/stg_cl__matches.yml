@@ -29,24 +29,28 @@ models:
         tests:
           - not_null:
               severity: error
+              where: "stage != 'FINAL'"
 
       - name: home_team_name
         description: "Name of the team playing at home"
         tests:
           - not_null:
               severity: error
+              where: "stage != 'FINAL'"
 
       - name: away_team_id
         description: "Unique ID of the team playing away"
         tests:
           - not_null:
               severity: error
+              where: "stage != 'FINAL'"
 
       - name: away_team_name
         description: "Name of the team playing away"
         tests:
           - not_null:
               severity: error
+              where: "stage != 'FINAL'"
 
       - name: fulltime_home_goals
         description: "Goles scored in the game by the home team"

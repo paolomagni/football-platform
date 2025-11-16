@@ -31,3 +31,4 @@ with source as (
         import_timestamp
 
     from source
+    where status != 'SCHEDULED'

@@ -1,0 +1,9 @@
+main:
+  steps:
+  - execute_dbt_job:
+      call: googleapis.run.v1.namespaces.jobs.run
+      args:
+        name: projects/nimble-theme-279316/locations/us-central1/jobs/dbt-build
+      result: runResult
+  - returnOutput:
+      return: ${runResult}

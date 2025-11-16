@@ -40,3 +40,4 @@ select
   end as stage_rank
 
 from {{ ref("int_cl__team_match_facts") }}
+where match_date < current_date()
