@@ -1,0 +1,54 @@
+name: Build & deploy dbt Docker image (update Cloud Run Job)
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'dbt/**'
+      - 'Dockerfile'
+      - 'docker/**'
+      - '.github/workflows/deploy_dbt.yml'
+
+env:
+  PROJECT_ID: nimble-theme-279316
+  REGION: us-central1
+  REPO: dbt-repo
+  IMAGE_NAME: dbt-job
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Authenticate to Google Cloud (WIF)
+      uses: google-github-actions/auth@v2
+      with:
+        workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+        service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+
+    - name: Setup gcloud
+      uses: google-github-actions/setup-gcloud@v2
+      with:
+        project_id: ${{ env.PROJECT_ID }}
+
+    - name: Build & push Docker image
+      run: |
+        IMAGE_URI="us-central1-docker.pkg.dev/${PROJECT_ID}/${REPO}/${IMAGE_NAME}"
+        TAG="${GITHUB_SHA::7}"
+        gcloud builds submit \
+          --tag "${IMAGE_URI}:${TAG}" \
+          --tag "${IMAGE_URI}:latest" .
+
+    - name: Update Cloud Run Job
+      run: |
+        IMAGE_URI="us-central1-docker.pkg.dev/${PROJECT_ID}/${REPO}/${IMAGE_NAME}:${GITHUB_SHA::7}"
+        gcloud run jobs update dbt-build \
+          --image "${IMAGE_URI}" \
+          --region ${REGION} \
+          --project ${PROJECT_ID}
