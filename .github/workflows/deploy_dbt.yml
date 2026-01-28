@@ -43,7 +43,8 @@ jobs:
         TAG="${GITHUB_SHA::7}"
         gcloud builds submit \
           --tag "${IMAGE_URI}:${TAG}" \
-          --tag "${IMAGE_URI}:latest" .
+          --tag "${IMAGE_URI}:latest" \
+          --async .
 
     - name: Update Cloud Run Job
       run: |
