@@ -39,6 +39,8 @@ jobs:
 
     - name: Build & push Docker image (immutable)
       run: |
+        set -e
+    
         TAG=${GITHUB_SHA::7}
         IMAGE_URI="us-central1-docker.pkg.dev/${PROJECT_ID}/${REPO}/${IMAGE_NAME}"
     
@@ -46,14 +48,31 @@ jobs:
     
         BUILD_ID=$(gcloud builds submit \
           --tag "${IMAGE_URI}:${TAG}" \
-          --format="value(metadata.build.id)" \
           --async \
+          --format="value(metadata.build.id)" \
           .)
     
         echo "Build ID: ${BUILD_ID}"
     
-        gcloud builds wait "${BUILD_ID}"
-
+        # Wait for build to finish
+        while true; do
+          STATUS=$(gcloud builds describe "${BUILD_ID}" \
+            --format="value(status)")
+    
+          echo "Build status: ${STATUS}"
+    
+          if [[ "${STATUS}" == "SUCCESS" ]]; then
+            echo "Build completed successfully"
+            break
+          fi
+    
+          if [[ "${STATUS}" == "FAILURE" || "${STATUS}" == "CANCELLED" ]]; then
+            echo "Build failed"
+            exit 1
+          fi
+    
+          sleep 10
+        done
 
     - name: Update Cloud Run Job
       run: |
