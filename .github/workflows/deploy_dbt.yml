@@ -46,12 +46,15 @@ jobs:
     
         echo "Building image ${IMAGE_URI}:${TAG}"
     
-        BUILD_ID=$(gcloud builds submit \
+        BUILD_NAME=$(gcloud builds submit \
           --tag "${IMAGE_URI}:${TAG}" \
           --async \
-          --format="value(metadata.build.id)" \
+          --format="value(name)" \
           .)
     
+        BUILD_ID="${BUILD_NAME##*/}"
+    
+        echo "Build name: ${BUILD_NAME}"
         echo "Build ID: ${BUILD_ID}"
     
         # Wait for build to finish
