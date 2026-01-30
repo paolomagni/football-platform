@@ -41,12 +41,19 @@ jobs:
       run: |
         TAG=${GITHUB_SHA::7}
         IMAGE_URI="us-central1-docker.pkg.dev/${PROJECT_ID}/${REPO}/${IMAGE_NAME}"
-
+    
         echo "Building image ${IMAGE_URI}:${TAG}"
-
-        gcloud builds submit \
+    
+        BUILD_ID=$(gcloud builds submit \
           --tag "${IMAGE_URI}:${TAG}" \
-          .
+          --format="value(metadata.build.id)" \
+          --async \
+          .)
+    
+        echo "Build ID: ${BUILD_ID}"
+    
+        gcloud builds wait "${BUILD_ID}"
+
 
     - name: Update Cloud Run Job
       run: |
