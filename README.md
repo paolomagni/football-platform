@@ -1,19 +1,27 @@
 # ⚽ FootballPlatform
 
-**FootballPlatform** is a cloud-native pipeline that collects, transforms, and analyzes football match data — starting with the UEFA Champions League.
+**FootballPlatform** is a cloud-native data platform that ingests, transforms, and analyzes football match data — starting with the UEFA Champions League.
+
+The project follows modern **analytics engineering** and **data platform** best practices on Google Cloud.
+
+---
 
 ## 🚀 Overview
 
-The project runs on **Google Cloud Platform** and includes:
+The platform runs entirely on **Google Cloud Platform (GCP)** and includes:
 
-- 🌩️ **Cloud Functions** to ingest and validate match data from external sources.
-- 🧱 **dbt (Data Build Tool)** to transform raw data into clean models.
-- 🧠 **BigQuery** as the central data warehouse.
-- 📊 **Looker Studio** to visualize curated mart-level statistics.
+- 🌩️ **Cloud Functions** for ingesting and validating football match data from external APIs
+- 🧱 **dbt (Data Build Tool)** for transforming raw data into analytics-ready models
+- 🧠 **BigQuery** as the central data warehouse
+- 🐳 **Docker + Cloud Build** for reproducible dbt builds
+- ▶️ **Cloud Run Jobs** to execute dbt in a serverless and scalable way
+- 🔄 **GitHub Actions** for CI/CD and automated deployments
+- 📊 **Looker Studio** for analytics and reporting
 
 ---
 
 ## 📂 Repository Structure
+
 ```
 football-platform/ 
 ├── Dockerfile 
@@ -45,13 +53,37 @@ football-platform/
 
 ## 🔧 Technologies Used
 
-- **Google Cloud Platform (GCP)**
+- **Google Cloud Platform**
   - Cloud Functions
   - Cloud Storage
   - BigQuery
+  - Artifact Registry
+  - Cloud Build
+  - Cloud Run Jobs
 - **dbt** (v1.10+)
+- **Docker**
+- **GitHub Actions (OIDC / Workload Identity Federation)**
 - **Python** (3.10+)
 - **Looker Studio**
+
+---
+
+## 🔄 CI/CD & Deployment Flow
+
+The dbt project is deployed automatically via **GitHub Actions**.
+
+### High-level flow
+
+1. A push to `main` triggers the GitHub Actions workflow
+2. A **Docker image** containing the dbt project is built using **Cloud Build**
+3. The image is tagged with the Git commit SHA (immutable)
+4. The image is pushed to **Artifact Registry**
+5. The **Cloud Run Job** is updated to use the new image
+
+This ensures:
+- fully reproducible dbt runs
+- immutable deployments
+- no “latest” or mutable tags in production
 
 ---
 
@@ -63,6 +95,11 @@ football-platform/
 cd dbt
 dbt build
 ```
+
+### In production
+
+dbt is executed via Cloud Run Jobs, using the Docker image built by the CI/CD pipeline.
+
 ---
 
 ## 📅 Roadmap
@@ -71,11 +108,17 @@ dbt build
 
 ✅ dbt models for staging and marts
 
-⏳ End-to-end orchestration
+✅ Dockerized dbt builds
 
-⏳ Terraform setup for infrastructure
+✅ CI/CD with GitHub Actions
 
-⏳ Automated testing & CI/CD pipeline
+✅ Cloud Run Jobs for dbt execution
+
+⏳ End-to-end orchestration (scheduler / DAG)
+
+⏳ Infrastructure as Code (Terraform)
+
+⏳ Automated tests & data quality checks
 
 ---
 
