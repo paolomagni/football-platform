@@ -18,7 +18,9 @@ The project runs on **Google Cloud Platform** and includes:
 football-platform/ 
 ├── Dockerfile 
 ├── .gitignore
-├── .github  
+├── .github
+│   └── workflows/
+│       └── deploy_dbt.yml
 ├── LICENSE  
 ├── README.md  
 │  
