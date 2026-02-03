@@ -14,6 +14,9 @@ with team_stats_agg as (
     case when goals_for_ft > goals_against_ft then 1 else 0 end as wins,
     case when goals_for_ft < goals_against_ft then 1 else 0 end as losses,
     case when goals_for_ft = goals_against_ft then 1 else 0 end as draws,
+    case when goals_for_ft > goals_against_ft then 3
+         when goals_for_ft = goals_against_ft then 1
+         else 0 end as points,
     goals_for_ft as goals_scored,
     goals_against_ft as goals_conceded,
     goals_for_ft - goals_against_ft as goal_difference

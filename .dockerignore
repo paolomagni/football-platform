@@ -1,0 +1,17 @@
+# Exclude unnecessary repos from the build
+cloud_functions/
+workflows/
+.github/
+.git/
+
+# Exclude temporary or unnecessary files
+__pycache__/
+*.pyc
+
+# Remove dbt cache
+dbt/target/
+dbt/logs/
+
+# Optional: reduce build context
+*.md
+LICENSE

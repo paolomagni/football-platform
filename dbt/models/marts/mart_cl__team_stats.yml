@@ -56,6 +56,9 @@ models:
       - name: draws
         description: "Total matches drawn"
 
+      - name: points
+        description: "Points earned in the match: 3 for a win, 1 for a draw, 0 for a loss."
+
       - name: goal_difference
         description: "Difference between goals scored and goals conceded"
 

@@ -14,6 +14,7 @@ select
   wins,
   losses,
   draws,
+  points,
   goals_scored,
   goals_conceded,
   goal_difference,
