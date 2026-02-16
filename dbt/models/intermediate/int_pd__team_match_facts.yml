@@ -1,0 +1,76 @@
+version: 2
+
+models:
+  - name: int_pd__team_match_facts
+    description: ""
+    columns:
+      - name: season_id
+        description: "Unique ID of the season within the competition"
+        tests:
+          - not_null
+
+      - name: team_id
+        description: "Unique ID of the team"
+        tests:
+          - not_null
+
+      - name: match_id
+        description: "ID of the match (each match appears once per team)"
+        tests:
+          - not_null
+
+      - name: match_date
+        description: "Date when the match was played"
+
+      - name: matchday
+        description: "Number of the matchday within the stage of the competition when the match was played"
+
+      - name: global_matchday
+        description: "Global matchday index across the whole season, useful for comparing team performance over time. Only present for matches actually played by the team. Gaps may exist if a team did not play in a given stage."
+
+      - name: season_year
+        description: "Year extracted from season_end_date"
+
+      - name: match_date
+        description: ""
+
+      - name: matchday
+        description: "Number of the matchday within the competition when the match was played"
+
+      - name: team_name
+        description: "Name of the team"
+        tests:
+          - not_null
+
+      - name: matches_played
+        description: "Total matches played"
+
+      - name: wins
+        description: "Total matches won"
+
+      - name: losses
+        description: "Total matches lost"
+
+      - name: draws
+        description: "Total matches drawn"
+
+      - name: points
+        description: "Points earned in the match: 3 for a win, 1 for a draw, 0 for a loss."
+
+      - name: goals_scored
+        description: "Total goals scored"
+
+      - name: goals_conceded
+        description: "Total goals scored conceded"
+
+      - name: goal_difference
+        description: ""
+
+      - name: is_home
+        description: "Boolean flag indicating whether the team played at home"
+
+      - name: is_comeback
+        description: "Flag for a comeback match - a win after trailing at half-time"
+
+      - name: is_collapse
+        description: "Flag for a collapse match - a loss after leading at half-time"

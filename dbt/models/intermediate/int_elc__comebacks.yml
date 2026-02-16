@@ -1,0 +1,41 @@
+version: 2
+
+models:
+  - name: int_elc__comebacks
+    description: ""
+    columns:
+      - name: season_id
+        description: "Unique ID of the season within the competition"
+        tests:
+          - not_null
+
+      - name: match_id
+        description: "ID of the match (each match appears once per team)"
+        tests:
+          - not_null
+
+      - name: match_date
+        description: "Date when the match was played"
+
+      - name: matchday
+        description: "Number of the matchday within the stage of the competition when the match was played"
+
+      - name: team_id
+        description: "Unique ID of the team"
+        tests:
+          - not_null
+
+      - name: is_home
+        description: "True if the team is playing at home, False otherwise"
+        tests:
+          - {'accepted_values': {'values': [True, False], 'quote': False}}
+
+      - name: is_comeback
+        description: "True if the team made a comeback"
+        tests:
+          - not_null
+
+      - name: is_collapse
+        description: "True if the team collapsed"
+        tests:
+          - not_null

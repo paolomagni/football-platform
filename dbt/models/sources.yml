@@ -20,3 +20,43 @@ sources:
     schema: football_data
     tables:
       - name: raw_pl__matches
+
+  - name: bundesliga
+    schema: football_data
+    tables:
+      - name: raw_bl1__matches
+
+  - name: eredivisie
+    schema: football_data
+    tables:
+      - name: raw_ded__matches
+
+  - name: campeonato_brasileiro
+    schema: football_data
+    tables:
+      - name: raw_bsa__matches
+
+  - name: primera_division
+    schema: football_data
+    tables:
+      - name: raw_pd__matches
+
+  - name: ligue_1
+    schema: football_data
+    tables:
+      - name: raw_fl1__matches
+
+  - name: championship
+    schema: football_data
+    tables:
+      - name: raw_elc__matches
+
+  - name: primera_liga
+    schema: football_data
+    tables:
+      - name: raw_ppl__matches
+
+  - name: world_cup
+    schema: football_data
+    tables:
+      - name: raw_wc__matches

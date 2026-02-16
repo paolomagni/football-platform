@@ -1,0 +1,51 @@
+version: 2
+
+models:
+  - name: int_bsa__base_team_matches
+    description: ""
+    columns:
+      - name: season_id
+        description: "Unique ID of the season within the competition"
+        tests:
+          - not_null
+
+      - name: match_id
+        description: "ID of the match (each match appears once per team)"
+        tests:
+          - not_null
+
+      - name: match_date
+        description: "Date when the match was played"
+
+      - name: matchday
+        description: "Number of the matchday within the stage of the competition when the match was played"
+
+      - name: season_year
+        description: "Year extracted from season_end_date"
+
+      - name: team_id
+        description: "Unique ID of the team"
+        tests:
+          - not_null
+
+      - name: team_name
+        description: "Name of the team"
+        tests:
+          - not_null
+
+      - name: goals_for_ht
+        description: "Goals scored by the team in the first half"
+
+      - name: goals_against_ht
+        description: "Goals conceded by the team in the first half"
+
+      - name: goals_for_ft
+        description: "Goals scored by the team in the full match"
+
+      - name: goals_against_ft
+        description: "Goals conceded by the team in the full match"
+
+      - name: is_home
+        description: "True if the team is playing at home, False otherwise"
+        tests:
+          - {'accepted_values': {'values': [True, False], 'quote': False}}
