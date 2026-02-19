@@ -51,7 +51,7 @@ sources:
     tables:
       - name: raw_elc__matches
 
-  - name: primera_liga
+  - name: primeira_liga
     schema: football_data
     tables:
       - name: raw_ppl__matches

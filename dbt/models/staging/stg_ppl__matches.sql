@@ -2,7 +2,7 @@
 with source as (
 
     select *,
-    from {{ source('primera_liga', 'raw_ppl__matches') }}
+    from {{ source('primeira_liga', 'raw_ppl__matches') }}
     qualify date(import_timestamp) = max(date(import_timestamp)) over (partition by season_id)
 
 )
