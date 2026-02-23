@@ -114,11 +114,11 @@ dbt is executed via Cloud Run Jobs, using the Docker image built by the CI/CD pi
 
 ✅ Cloud Run Jobs for dbt execution
 
-⏳ End-to-end orchestration (scheduler / DAG)
+✅ End-to-end orchestration (scheduler / DAG)
 
 ⏳ Infrastructure as Code (Terraform)
 
-⏳ Automated tests & data quality checks
+✅ Automated tests & data quality checks
 
 ---
 
