@@ -132,7 +132,7 @@ Match data is sourced from Football-Data.org, a free public API for football dat
 
 ## 📈 Live Dashboard
 
-View the demo dashboard here: Champions League Dashboard [Looker Studio](https://lookerstudio.google.com/s/vnXW0_9aQtI)
+View the demo dashboard here: Champions League Dashboard [Data Studio](https://lookerstudio.google.com/s/vnXW0_9aQtI)
 
 ---
 
