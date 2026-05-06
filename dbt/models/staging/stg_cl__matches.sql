@@ -32,4 +32,5 @@ with source as (
         import_timestamp
 
     from source
-    where status != 'SCHEDULED'
+    where status = 'FINISHED'
+      and utc_date < current_timestamp()
