@@ -21,3 +21,11 @@ dbt/dbt_modules/
 testing/
 .cache/
 *.log
+
+# Ignore Terraform state and local files
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+crash.log
+crash.*.log
