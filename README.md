@@ -1,6 +1,6 @@
 # ⚽ FootballPlatform
 
-**FootballPlatform** is a cloud-native data platform that ingests, transforms, and analyzes football match data — starting with the UEFA Champions League.
+**FootballPlatform** is a cloud-native data platform that ingests, transforms, and models football data into analytics-ready datasets — starting with the UEFA Champions League.
 
 The project follows modern **analytics engineering** and **data platform** best practices on Google Cloud.
 
@@ -11,7 +11,7 @@ The project follows modern **analytics engineering** and **data platform** best 
 The platform runs entirely on **Google Cloud Platform (GCP)** and includes:
 
 - 🌩️ **Cloud Functions** for ingesting and validating football match data from external APIs
-- 🧱 **dbt (Data Build Tool)** for transforming raw data into analytics-ready models
+- 🧱 **dbt (Data Build Tool)** for transforming raw data into analytics-ready models, with automated testing, documentation and modular transformations.
 - 🧠 **BigQuery** as the central data warehouse
 - 🐳 **Docker + Cloud Build** for reproducible dbt builds
 - ▶️ **Cloud Run Jobs** to execute dbt in a serverless and scalable way
@@ -102,23 +102,40 @@ dbt is executed via Cloud Run Jobs, using the Docker image built by the CI/CD pi
 
 ---
 
+## 🧱 Data Modeling
+
+The models follow a layered architecture inspired by modern analytics engineering patterns:
+
+- Staging models: source cleaning and standardization
+- Intermediate models: reusable business logic transformations
+- Mart models: business-facing datasets optimized for analytics consumption
+
+The final data model is designed to support analytical use cases such as:
+- team performance analysis
+- player statistics
+- match trends
+- competition insights
+
+---
+
 ## 📅 Roadmap
 
-✅ Raw data ingestion from bucket to BigQuery
+### ✅ Completed
+- Raw data ingestion from external APIs into BigQuery
+- dbt models for staging, intermediate and mart layers
+- Dockerized dbt execution
+- CI/CD pipeline with GitHub Actions
+- Serverless dbt execution using Cloud Run Jobs
+- Automated tests and data quality checks
+- End-to-end orchestration workflow
 
-✅ dbt models for staging and marts
+### 🚧 In Progress
+- Infrastructure as Code implementation using Terraform
 
-✅ Dockerized dbt builds
-
-✅ CI/CD with GitHub Actions
-
-✅ Cloud Run Jobs for dbt execution
-
-✅ End-to-end orchestration (scheduler / DAG)
-
-⏳ Infrastructure as Code (Terraform)
-
-✅ Automated tests & data quality checks
+### 🔮 Future Improvements
+- Advanced orchestration and monitoring capabilities
+- AI-powered analytics assistant to interact with the data platform and provide natural language insights
+- Additional analytical models and data sources
 
 ---
 
