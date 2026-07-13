@@ -12,4 +12,5 @@ variable "buckets" {
 
 variable "function_service_account_email" {
   type = string
+  default = null
 }

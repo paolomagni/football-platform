@@ -14,6 +14,8 @@ resource "google_storage_bucket" "bucket" {
 }
 
 resource "google_storage_bucket_iam_member" "function_writer" {
+  count = var.function_service_account_email != null ? 1 : 0
+
   bucket = google_storage_bucket.bucket["raw"].name
 
   role = "roles/storage.objectCreator"
