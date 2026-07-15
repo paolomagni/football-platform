@@ -1,11 +1,12 @@
 module "storage" {
   source = "../../modules/storage"
 
-  location = "US"
+  bucket_name   = "football-data-org-raw"
+  location      = "US"
+  versioning    = true
+  force_destroy = false
 
-  buckets = local.buckets
-
-  function_service_account_email = module.football_functions_sa.email
+  # function_service_account_email = module.service_accounts.function_email
 }
 
 module "fetch_matches_function" {

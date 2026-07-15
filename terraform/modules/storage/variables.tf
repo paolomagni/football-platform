@@ -1,16 +1,20 @@
+variable "bucket_name" {
+  type = string
+}
+
 variable "location" {
   type = string
 }
 
-variable "buckets" {
-  type = map(object({
-    name          = string
-    versioning    = bool
-    force_destroy = bool
-  }))
+variable "autoclass_enabled" {
+  type = bool
+}
+
+variable "force_destroy" {
+  type = bool
 }
 
 variable "function_service_account_email" {
-  type = string
+  type    = string
   default = null
 }
