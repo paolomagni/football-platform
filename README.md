@@ -46,6 +46,12 @@ football-platform/
 │   ├── package-lock.yml  
 │   └── packages.yml
 │
+├── terraform/  
+│   ├── clouad_function_source/  
+│   ├── environments/  
+│   ├── modules/  
+│   └── README.md
+│
 └── workflows/ 
     └── trigger_dbt_build.yml
 ```
