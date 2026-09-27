@@ -1,55 +1,34 @@
 module "storage" {
   source = "../../modules/storage"
 
-  bucket_name   = "football-data-org-raw"
-  location      = "US"
-  versioning    = true
-  force_destroy = false
-
-  # function_service_account_email = module.service_accounts.function_email
+  bucket_name       = "football-data-org-raw-dev"
+  location          = "US"
+  autoclass_enabled = false
+  force_destroy     = true
 }
 
-module "fetch_matches_function" {
-  source = "../../modules/cloud_function"
-
-  function_name = "fetch-matches-footballdata-dev"
-
-  region = var.region
-
-  source_bucket = "footballplatform-functions-source-dev"
-
-  source_dir = "../../cloud_function_source/fetch-matches-footballdata"
-
-  entry_point = "fetch_matches_footballdata"
-
-  service_account_email = module.football_functions_sa.email
-
-  project_id = var.project_id
-
-  environment_variables = {
-    BUCKET_NAME = "football-data-org-raw-dev"
-  }
-}
-
-module "football_functions_sa" {
+module "service_accounts" {
   source = "../../modules/service_account"
 
-  account_id   = "football-functions-sa"
-  display_name = "Football Functions Service Account"
+  service_accounts = {
+    function = {
+      account_id   = "football-functions-dev"
+      display_name = "Football Functions Dev"
+      description  = "Service account for development and testing"
+    }
+  }
 }
 
 module "football_data_api_secret" {
   source = "../../modules/secret_manager"
 
-  secret_id    = "football-data-api-key"
-  secret_value = var.football_data_api_key
+  secret_id = "football-data-api-key-dev"
 }
 
 resource "google_secret_manager_secret_iam_member" "function_secret_access" {
-
+  project   = var.project_id
   secret_id = module.football_data_api_secret.secret_id
 
-  role = "roles/secretmanager.secretAccessor"
-
-  member = "serviceAccount:${module.football_functions_sa.email}"
+  role   = "roles/secretmanager.secretAccessor"
+  member = "serviceAccount:${module.service_accounts.emails["function"]}"
 }

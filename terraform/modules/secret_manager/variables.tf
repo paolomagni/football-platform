@@ -5,4 +5,5 @@ variable "secret_id" {
 variable "secret_value" {
   type      = string
   sensitive = true
+  default = null
 }

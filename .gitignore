@@ -29,3 +29,15 @@ testing/
 *.tfplan
 crash.log
 crash.*.log
+
+# Ignore Terraform plan files
+*.tfplan
+*.tfplan.json
+
+# Ignore Terraform diagnostic / local artifacts
+terraform/environments/**/provider-schema.json
+terraform/environments/**/state-backup.json
+terraform/environments/**/terraform-state-list.txt
+terraform/environments/**/workflow-*.json
+terraform/environments/**/gcp-asset-types.txt
+terraform/environments/**/iam-policy.json

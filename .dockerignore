@@ -1,5 +1,5 @@
 # Exclude unnecessary repos from the build
-cloud_functions/
+functions/
 workflows/
 .github/
 .git/
