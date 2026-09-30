@@ -381,7 +381,7 @@ This project is intended for educational and personal use. Please review the Foo
 
 View the project dashboard here:
 
-[Football Platform - Competitions Report — Looker Studio](https://lookerstudio.google.com/s/vnXW0_9aQtI)
+[Football Platform - Competitions Report — Data Studio](https://lookerstudio.google.com/s/vnXW0_9aQtI)
 
 ---
 
