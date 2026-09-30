@@ -22,7 +22,7 @@ The platform runs on **Google Cloud Platform (GCP)** and includes:
 * 🔄 **Workflows + Cloud Scheduler** for pipeline orchestration and scheduled data imports
 * 🏗️ **Terraform** for Infrastructure as Code and reproducible GCP infrastructure management
 * 🔑 **GitHub Actions + Workload Identity Federation** for CI/CD
-* 📊 **Looker Studio** for analytics and reporting
+* 📊 **Data Studio** for analytics and reporting
 
 ---
 
@@ -51,7 +51,7 @@ Cloud Run ingestion functions
 Analytics-ready models
         │
         ▼
-   Looker Studio
+   Data Studio
 ```
 
 Pipeline orchestration is handled by **Cloud Scheduler** and **Workflows**, while Terraform manages the underlying GCP infrastructure.
@@ -164,7 +164,7 @@ Terraform packages the individual function directories into source archives and 
 * **dbt** (v1.10+)
 * **Python**
 * **SQL**
-* **Looker Studio**
+* **Data Studio**
 
 ### Infrastructure & CI/CD
 
@@ -357,7 +357,7 @@ The resulting models support analytical use cases including:
 * Workload Identity Federation for GitHub authentication
 * Cloud Run Function source management through Terraform
 * End-to-end pipeline validation
-* Looker Studio dashboard
+* Data Studio dashboard
 
 ### 🚧 Future Improvements
 
@@ -381,7 +381,7 @@ This project is intended for educational and personal use. Please review the Foo
 
 View the project dashboard here:
 
-[Football Platform - Competitions Report — Data Studio](https://lookerstudio.google.com/s/vnXW0_9aQtI)
+[Football Platform - Competitions Report — Data Studio](https://datastudio.google.com/reporting/8fcd0352-8d15-4de7-be3b-6aa7a808608a)
 
 ---
 
